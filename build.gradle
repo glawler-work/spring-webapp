@@ -1,0 +1,30 @@
+allprojects {
+    apply plugin: 'java'
+}
+
+subprojects {
+    dependencies {
+        compile 'org.springframework:spring-jms:4.1.7.RELEASE'
+        compile 'org.apache.activemq:activemq-core:5.7.0'
+        testCompile 'junit:junit:4.12'
+        testCompile 'org.mockito:mockito-all:1.10.19'
+        testCompile 'org.springframework:spring-test:4.1.7.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/java'
+            }
+        }
+        test {
+            java {
+                srcDir 'test/java'
+            }
+        }
+    }
+}

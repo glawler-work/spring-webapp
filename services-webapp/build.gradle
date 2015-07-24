@@ -1,0 +1,27 @@
+apply plugin: 'war'
+
+dependencies {
+    compile project(':jms')
+    compile project(':model')
+    compile 'org.apache.activemq:activemq-core:5.7.0'
+    compile 'org.hibernate:hibernate-core:4.3.6.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.6.Final'
+    compile 'org.hibernate:hibernate-validator:5.1.2.Final'
+    compile 'javax.validation:validation-api:1.1.0.Final'
+    compile 'org.apache.commons:commons-dbcp2:2.1'
+    compile 'org.springframework:spring-jms:4.1.7.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.1.7.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.1.7.RELEASE'
+    compile 'org.springframework:spring-orm:4.1.7.RELEASE'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.slf4j:slf4j-simple:1.7.12'
+    runtime 'mysql:mysql-connector-java:5.1.36'
+}
+
+repositories {
+    mavenCentral()
+}
+
+war {
+    baseName 'services-webapp'
+}

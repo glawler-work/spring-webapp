@@ -1,0 +1,4 @@
+dependencies {
+    compile 'org.springframework:spring-jms:4.1.7.RELEASE'
+    compile 'org.apache.activemq:activemq-core:5.7.0'
+}

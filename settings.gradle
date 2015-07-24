@@ -1,0 +1,1 @@
+include ':frontend-webapp', ':services-webapp', ':jms:common', ':model'
