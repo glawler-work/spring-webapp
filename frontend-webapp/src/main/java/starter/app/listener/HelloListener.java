@@ -19,7 +19,7 @@ public class HelloListener {
     private List<String> hellos = new ArrayList<>();
 
     @JmsListener(destination = "hello.topic")
-    public void getHelloViewLocation(Message message) {
+    public void getHello(Message message) {
         try {
             String hello = message.getStringProperty(JmsPropertyConstants.HELLO);
             logger.info("Message received:" + hello);

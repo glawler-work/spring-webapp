@@ -14,7 +14,6 @@ public class HelloRestController {
 
     @RequestMapping(value = "/api/hello", method = RequestMethod.GET, produces = "application/json")
     public String numberOfHellos() {
-        System.out.println("API called");
         return String.valueOf(helloListener.getHellos().size());
     }
 }

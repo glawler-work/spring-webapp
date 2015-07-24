@@ -22,6 +22,7 @@ import java.util.UUID;
 @Component(value = "userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    private static final String ROLE_USER = "ROLE_USER";
     private Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     private JmsTemplate jmsTemplate;
     private Queue replyQueue;
@@ -57,6 +58,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException(e.getMessage());
         }
 
-        return new User(userCredential.getUsername(), userCredential.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        return new User(userCredential.getUsername(), userCredential.getPassword(), Arrays.asList(new SimpleGrantedAuthority(ROLE_USER)));
     }
 }

@@ -11,34 +11,35 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import starter.app.listener.HelloListener;
 
+import java.util.Arrays;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class HelloControllerTest {
-
-    private static final String INDEX = "index";
-    private HelloController helloController;
-    @Mock
-    private HelloListener helloListener;
+public class HelloRestControllerTest {
+    private HelloRestController helloRestController;
+    @Mock private HelloListener helloListener;
     private MockHttpServletRequestBuilder requestBuilder;
     private MockMvc mockMvc;
 
     @Before
     public void onSetUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        helloController = new HelloController();
-        helloController.helloListener = helloListener;
-        mockMvc = MockMvcBuilders.standaloneSetup(helloController).build();
+        helloRestController = new HelloRestController();
+        helloRestController.helloListener = helloListener;
+        mockMvc = MockMvcBuilders.standaloneSetup(helloRestController).build();
 
-        requestBuilder = MockMvcRequestBuilders.get("/hello");
+        requestBuilder = MockMvcRequestBuilders.get("/api/hello");
     }
 
     @Test
-    public void success() throws Exception {
+    public void happyPath() throws Exception {
+        when(helloListener.getHellos()).thenReturn(Arrays.asList("hello", "hello"));
         MvcResult mvcResult = mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andReturn();
-        assertThat(INDEX, is(mvcResult.getModelAndView().getViewName()));
+        assertThat("2", is(mvcResult.getResponse().getContentAsString()));
     }
 }
