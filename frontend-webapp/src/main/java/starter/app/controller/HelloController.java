@@ -17,11 +17,10 @@ public class HelloController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public ModelAndView test() {
+    public ModelAndView hello() {
 
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.getModelMap().addAttribute("result", helloListener.getHellos());
-        modelAndView.getModelMap().addAttribute("resultSize", helloListener.getHellos().size());
 
         return modelAndView;
     }

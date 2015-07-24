@@ -30,6 +30,7 @@ public class AppInitializer extends WebMvcConfigurerAdapter implements WebApplic
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
     }
 
