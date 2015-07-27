@@ -14,7 +14,7 @@ public class HelloHibernateDao {
     private SessionFactory sessionFactory;
 
     @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-    public String getHelloViewLocation() {
+    public String getHello() {
         Object o = sessionFactory.getCurrentSession().get(Hello.class, 1);
         if(o instanceof Hello) {
             return ((Hello)o).getValue();

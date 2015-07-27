@@ -44,7 +44,7 @@ public class HelloMessageProducer {
                         message.setJMSDeliveryMode(DeliveryMode.PERSISTENT);
                         message.setJMSCorrelationID(UUID.randomUUID().toString());
                         message.setJMSMessageID(UUID.randomUUID().toString());
-                        message.setStringProperty(JmsPropertyConstants.HELLO, helloHibernateDao.getHelloViewLocation());
+                        message.setStringProperty(JmsPropertyConstants.HELLO, helloHibernateDao.getHello());
                         logger.info("Message produced");
                         return message;
                     }

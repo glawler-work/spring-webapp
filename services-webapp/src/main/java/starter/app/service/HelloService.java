@@ -10,7 +10,7 @@ public class HelloService {
     @Autowired
     protected HelloHibernateDao helloHibernateDao;
 
-    public String getFromDatabase(String method) {
-        return helloHibernateDao.getHelloViewLocation();
+    public String getFromDatabase() {
+        return helloHibernateDao.getHello();
     }
 }
