@@ -28,6 +28,6 @@ public class HelloMessageProducer {
         this.topic = topic;
         jmsTemplate.setPubSubDomain(true);
 
-        new Thread(new MessageProducerThread(jmsTemplate, helloHibernateDao, messageCreator)).start();
+        new Thread(new MessageProducerThread(jmsTemplate, messageCreator)).start();
     }
 }
