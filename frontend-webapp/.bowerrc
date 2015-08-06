@@ -1,0 +1,8 @@
+{
+    "directory": "src/main/webapp/bower_components",
+    "storage": {
+        "registry": "caches/bower",
+        "cache": "caches/bower",
+        "packages": "caches/bower"
+    }
+}

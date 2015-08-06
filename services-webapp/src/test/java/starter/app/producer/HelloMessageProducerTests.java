@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.jms.core.JmsTemplate;
-import starter.app.dao.HelloHibernateDao;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -17,12 +16,11 @@ public class HelloMessageProducerTests {
 
     private MessageProducerThread messageProducerThread;
     private @Mock JmsTemplate jmsTemplate;
-    private @Mock HelloHibernateDao helloHibernateDao;
     private @Mock JmsMessageCreator jmsMessageCreator;
 
     @Before
     public void onSetUp() throws Exception {
-        messageProducerThread = new MessageProducerThread(jmsTemplate, helloHibernateDao, jmsMessageCreator);
+        messageProducerThread = new MessageProducerThread(jmsTemplate, jmsMessageCreator);
         Thread thread = new Thread(messageProducerThread);
         thread.start();
     }

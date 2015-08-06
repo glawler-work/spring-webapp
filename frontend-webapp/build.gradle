@@ -1,4 +1,33 @@
+plugins {
+    id "com.moowork.node" version "0.10"
+    id "com.moowork.grunt" version "0.10"
+}
+
 apply plugin: 'war'
+
+node {
+    version = '0.12.2'
+    npmVersion = '2.7.5'
+    download = true
+}
+
+task npmPackages(type: NpmTask) {
+    description = "Install Node.js packages"
+    args = [ 'config', 'set', 'cache', "caches/npm" ]
+    args = [ 'install' ]
+}
+
+task bowerInstall(type: NodeTask) {
+    script = file('node_modules/bower/bin/bower')
+    args = ['install']
+    dependsOn npmPackages
+}
+
+task karma(type: NodeTask) {
+    script = file('node_modules/karma/bin/karma')
+    args = ['start', 'src/test/js/karma.conf.js']
+    dependsOn bowerInstall
+}
 
 dependencies {
     compile project(':jms')
@@ -23,4 +52,6 @@ repositories {
 
 war {
     baseName 'frontend-webapp'
+    dependsOn test
+    dependsOn karma
 }

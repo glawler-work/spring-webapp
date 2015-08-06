@@ -1,2 +1,7 @@
 target/
 lib/
+caches/
+node_modules/
+build/
+src/main/webapp/bower_components
+*.iml

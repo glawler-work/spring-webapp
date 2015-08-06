@@ -1,0 +1,18 @@
+{
+  "engines": {
+    "node": "0.12.x"
+  },
+  "name": "frontend-webapp",
+  "version": "0.1.0",
+  "dependencies": {
+    "bower": "^1.4.0"
+  },
+  "devDependencies": {
+    "phantomjs": "~1.9",
+    "karma": "~0.13",
+    "karma-phantomjs-launcher": "~0.1",
+    "karma-jasmine": "~0.1",
+    "karma-requirejs": "~0.2",
+    "requirejs": "~2.1"
+  }
+}
